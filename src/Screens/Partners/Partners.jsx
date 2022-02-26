@@ -1,10 +1,15 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import styles from './Partners.module.scss';
+import './OverRide.scss';
 
-const Partners = () => {
+const Partners = ({ isJoinPage = false }) => {
   return (
-    <div className={styles.main_partners}>
+    <div
+      className={`${styles.main_partners} ${
+        isJoinPage ? 'mainpartnersOverride' : ''
+      }`}
+    >
       <Row>
         <Col sm={12} md={12}>
           <div className={styles.img_container}>
@@ -12,7 +17,7 @@ const Partners = () => {
           </div>
         </Col>
         <Col sm={12} md={12}>
-          <div className={styles.partners}>
+          <div className={`${styles.partners} ${isJoinPage ? "partnersOverride" : ""}`}>
             <div className={styles.head}>
               <h3>
                 Lonely <br />
@@ -22,10 +27,12 @@ const Partners = () => {
             <div className={styles.partners_icons}>
               <img src='Assets/discord.png' alt='' />
             </div>
-            <div className={styles.social_icons}>
-              <img src='Assets/insta.png' alt='' />
-              <img src='Assets/twitter.png' alt='' />
-            </div>
+            {isJoinPage ? null : (
+              <div className={styles.social_icons}>
+                <img src='Assets/insta.png' alt='' />
+                <img src='Assets/twitter.png' alt='' />
+              </div>
+            )}
           </div>
         </Col>
       </Row>

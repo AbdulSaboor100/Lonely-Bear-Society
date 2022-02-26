@@ -5,7 +5,7 @@ import { Animated } from 'react-animated-css';
 import { useWindowScrollPositions } from '../../Components/Scrolls/Scrolls';
 import './OverRide.scss';
 
-const Heading = () => {
+const Heading = ({ showNavbar = true }) => {
   let [sideBarState, setSiteBarState] = useState(false);
   const { scrollX, scrollY } = useWindowScrollPositions();
   let [activeState, setActiveState] = useState('');
@@ -30,7 +30,7 @@ const Heading = () => {
               scrollY > 20 ? 'scrollable' : ''
             }`}
           >
-            <div className={styles.head}>
+            <div className={`${styles.head} ${showNavbar ? '' : 'adjustHead'}`}>
               <h3>
                 <a href='#home'>
                   LONELY BEAR <br />
@@ -40,59 +40,68 @@ const Heading = () => {
             </div>
             {/* <div> */}
             <div className={`${styles.links}`}>
-              <p
-                className={`${
-                  activeState === '#aboutus' ? styles.active_links : ''
-                }`}
-              >
-                <a href='#aboutus'>ABOUT US</a>
-              </p>
-              <p
-                className={`${
-                  activeState === '#works' ? styles.active_links : ''
-                }`}
-              >
-                <a href='#works'>WORKS</a>
-              </p>
-              <p
-                className={`${
-                  activeState === '#teams' ? styles.active_links : ''
-                }`}
-              >
-                <a href='#teams'>ARTIST</a>
-              </p>
-              <p
-                className={`${
-                  activeState === '#roadmaps' ? styles.active_links : ''
-                }`}
-              >
-                <a href='#roadmaps'>ROADMAP</a>
-              </p>
-              <p
-                className={`${
-                  activeState === '#faqss' ? styles.active_links : ''
-                }`}
-              >
-                <a href='#faqss'>FAQ</a>
-              </p>
-              <p>
-                <a>JOIN</a>
-              </p>
+              {showNavbar ? (
+                <>
+                  <p
+                    className={`${
+                      activeState === '#aboutus' ? styles.active_links : ''
+                    }`}
+                  >
+                    <a href='#aboutus'>ABOUT US</a>
+                  </p>
+                  <p
+                    className={`${
+                      activeState === '#works' ? styles.active_links : ''
+                    }`}
+                  >
+                    <a href='#works'>WORKS</a>
+                  </p>
+                  <p
+                    className={`${
+                      activeState === '#teams' ? styles.active_links : ''
+                    }`}
+                  >
+                    <a href='#teams'>ARTIST</a>
+                  </p>
+                  <p
+                    className={`${
+                      activeState === '#roadmaps' ? styles.active_links : ''
+                    }`}
+                  >
+                    <a href='#roadmaps'>ROADMAP</a>
+                  </p>
+                  <p
+                    className={`${
+                      activeState === '#faqss' ? styles.active_links : ''
+                    }`}
+                  >
+                    <a href='#faqss'>FAQ</a>
+                  </p>
+                  <p>
+                    <a>JOIN</a>
+                  </p>
+                </>
+              ) : null}
             </div>
+
             {/* </div> */}
-            <div className={styles.side_bar}>
-              <img
-                src='Assets/sidebar.png'
-                alt=''
-                onClick={sideBarState ? sidebarCloser : sidebarOpener}
-              />
-            </div>
-            {sideBarState ? (
+            {showNavbar === true ? (
+              <div className={styles.side_bar}>
+                <img
+                  src='Assets/sidebar.png'
+                  alt=''
+                  onClick={sideBarState ? sidebarCloser : sidebarOpener}
+                />
+              </div>
+            ) : null}
+            {sideBarState && showNavbar === true ? (
               <div className={styles.sidebar}>
                 <div className={styles.lists}>
                   <p
                     className={`${
-                      activeState === '#aboutus' ? styles.active_links_mobile : ''
+                      activeState === '#aboutus'
+                        ? styles.active_links_mobile
+                        : ''
                     }`}
                   >
                     <a href='#aboutus'>ABOUT US</a>
@@ -113,7 +122,9 @@ const Heading = () => {
                   </p>
                   <p
                     className={`${
-                      activeState === '#roadmaps' ? styles.active_links_mobile : ''
+                      activeState === '#roadmaps'
+                        ? styles.active_links_mobile
+                        : ''
                     }`}
                   >
                     <a href='#roadmaps'>ROADMAP</a>
@@ -162,7 +173,11 @@ const Heading = () => {
               animationOut='fadeIn'
               isVisible={true}
             >
-              <button className='animate__backInUp'>
+              <button
+                className={`${styles.discordBtn} ${
+                  showNavbar ? '' : 'buttonOverride'
+                }`}
+              >
                 <span>JOIN OUR DISCORD</span>
               </button>
             </Animated>

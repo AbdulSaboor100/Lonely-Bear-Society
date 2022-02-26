@@ -1,6 +1,6 @@
 // Colors
 $white: #ffffff;
-$milkywhite: #FFFFFF;
+$milkywhite: #ffffff;
 $grey: #869099;
 $maroon: #ee405e;
 $black: #000000;
@@ -128,4 +128,31 @@ a {
 .icon {
   width: 22px !important;
   height: 22px !important;
+}
+
+.discordBtn {
+  background: linear-gradient(90deg, #60cfff, #0090bd);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.175em;
+  line-height: 109.6%;
+  margin-left: 42px;
+  padding: 24px 36px;
+  text-transform: uppercase;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: lemons;
+  background: linear-gradient(to left, #4eb3c7 50%, #237d8f 50%, #60cfff);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.2s ease-out;
+  @include media('mobile') {
+    margin: 0;
+    padding: 20px 40px;
+  }
+}
+.discordBtn:hover {
+  background-position: right bottom;
 }

@@ -3,9 +3,9 @@ import styles from './RoadMap.module.scss';
 import { Row, Col } from 'reactstrap';
 import { Animated } from 'react-animated-css';
 
-const RoadMap = () => {
+const RoadMap = ({ isJoinPage = false }) => {
   return (
-    <div className={styles.main_road_map} id="roadmaps">
+    <div className={styles.main_road_map} id='roadmaps'>
       <Row>
         <Col sm={12} md={12}>
           <Animated
@@ -19,6 +19,15 @@ const RoadMap = () => {
             </div>
           </Animated>
         </Col>
+        {isJoinPage ? (
+          <Col sm={12} md={12}>
+            <div className={styles.btn}>
+              <button className={styles.discordBtn}>
+                <span>JOIN OUR DISCORD</span>
+              </button>
+            </div>
+          </Col>
+        ) : null}
         <Col xs={2} sm={2} md={2}>
           {/* <div className={styles.circle}></div> */}
           <div className={styles.line}>

@@ -4,8 +4,25 @@
   transition: all 0.5s ease-in-out !important;
 }
 
+.adjustHead {
+  padding-right: 35rem;
+}
+.buttonOverride {
+  padding: 2rem 10rem;
+  margin-left: 1rem;
+  font-size: 30px;
+}
+
 @media only screen and (max-width: 767px) {
   .scrollable {
     padding: 0 0.5rem !important;
+  }
+  .adjustHead {
+    padding: 0;
+  }
+  .buttonOverride {
+    padding: 34px 80px;
+    margin-left: 0;
+    font-size: 13px;
   }
 }
